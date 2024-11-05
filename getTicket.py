@@ -83,7 +83,7 @@ for u in contractUtxos:
 
 if gameFound and gamePool != 0:
     for u in contractUtxos:
-        if u.output.datum.cbor == b'\xd8y\x9fDfish\xff':
+        if u.output.datum.cbor == b'\xd8|\x9fDfish\xff':  #b'\xd8y\x9fDfish\xff'
             print('FoundPoolUtxo')
             poolUtxo = u
 
