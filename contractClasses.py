@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from opshin.prelude import *
 from pycardano import PlutusData
 
 @dataclass()
@@ -10,30 +10,37 @@ class Game(PlutusData):
     pool: int
 
 @dataclass()
+class swapAsset(PlutusData):
+    CONSTR_ID = 5
+    owner: bytes
+    stake: bytes
+    cost: int    
+
+@dataclass()
 class Player(PlutusData):
     CONSTR_ID = 2
-    paymentCred: bytes
-    stakingCred: bytes
-    ticket_number: int
+    cred: List[List[bytes]]
 
 @dataclass()
 class tunaDatum(PlutusData):
     CONSTR_ID = 0
     block: int
     block_hash: bytes
-    leading_zeros: int
+    lz: int
     target_number: int
-    epoch_time: int
-    posix_time: int
-    merkle_root: bytes
-
-@dataclass()
-class prizePool(PlutusData):
-    CONSTR_ID = 3
-    prizepool: bytes # b'fish'
+    et: int
+    pt: int
+    m: bytes
 
 @dataclass()
 class STATE(PlutusData):
     # StateRedeemer
     CONSTR_ID = 0
     state: int
+    index: int
+    
+@dataclass()
+class prizePool(PlutusData):
+    CONSTR_ID = 3
+    prizepool: bytes # b'fish'
+
